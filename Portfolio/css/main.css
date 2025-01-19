@@ -1085,11 +1085,14 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  * ------------------------------------------------------------------- 
  */
 header {
-	position: fixed;
-	width: 100%;
-	min-height: 66px;
-	z-index: 600;
+    position: fixed;
+    width: 100%;
+    min-height: 66px;
+    z-index: 600;
+    transition: top 0.3s ease-in-out;
+    top: 0;
 }
+
 header .row {
 	position: relative;
 	min-height: 66px;
@@ -1115,7 +1118,7 @@ header .logo a {
 	margin: 0;
 	padding: 0;
 	border: none;
-	font: 0/0a;
+	font: inherit;
 	text-shadow: none;
 	color: transparent;
 	width: 200px;
@@ -1143,7 +1146,7 @@ header .logo a {
 	width: 24px;
 	height: 3px;
 	margin-top: -1.5px;
-	font: 0/0 a;
+	font: inherit;
 	text-shadow: none;
 	color: transparent;
 	position: absolute;
@@ -2496,6 +2499,8 @@ footer {
 	padding-bottom: 3rem;
 	font-size: 1.4rem;
 	font-family: "poppins-regular", sans-serif;
+	text-align: center;
+	/*padding-right: 400px;*/
 }
 footer a, footer a:visited {
 	color: #FFFFFF;
@@ -2503,17 +2508,16 @@ footer a, footer a:visited {
 footer a:hover, footer a:focus {
 	color: #ccAA00FF;
 }
-footer .row {
-	max-width: 900px;
-}
-footer .social {
-	text-align: right;
-}
+/*footer .row {*/
+/*	max-width: 900px;*/
+/*}*/
+/*footer .social {*/
+/*	text-align: center;*/
+/*	margin: 1rem;*/
+/*}*/
 footer .footer-social {
 	display: inline-block;
 	font-size: 2.1rem;
-	margin: 0;
-	padding: 0;
 	position: relative;
 	top: -.3rem;
 }
@@ -2525,13 +2529,18 @@ footer .footer-social li {
 footer .footer-social li a {
 	color: #FFFFFF;
 }
+
+footer .copyright {
+    text-align: center;
+    margin-top: 1rem;
+	/*padding-right: 200px;*/
+}
 footer .copyright span {
 	display: inline-block;
 }
 footer .copyright span::after {
 	content: "|";
 	display: inline-block;
-	padding: 0 1rem 0 1.2rem;
 	color: rgba(255, 255, 255, 0.1);
 }
 footer .copyright span:last-child::after {
@@ -2543,11 +2552,32 @@ footer .copyright span:last-child::after {
  * footer
  * -------------------------------------------------------------------
  */
+@media only screen and (max-width:1024px) {
+    footer {
+        text-align: center;
+    }
+    footer .footer-social {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    footer .copyright {
+        text-align: center;
+    }
+    footer .copyright span {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    footer .copyright span::after {
+        display: none;
+    }
+}
 @media only screen and (max-width:768px) {
 	footer {
 		text-align: center;
 	}
-	footer .social {
+	footer .footer-social {
 		display: block;
 		width: 100%;
 		text-align: center;
@@ -2602,4 +2632,8 @@ strong img{
 	height: 70px;
 }
 
-/*# sourceMappingURL=main.css.map */
+.skill-bars img{
+	border-radius: 50%;
+	width: 65px;
+	height: 65px;
+}
