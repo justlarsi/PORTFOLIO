@@ -882,17 +882,17 @@
 
     // Function to hide the header after 2 seconds
     function hideHeaderAfterTimeout() {
-        clearTimeout(hideHeaderTimeout); // Cancel any existing timeout
+        clearTimeout(hideHeaderTimeout);
         hideHeaderTimeout = setTimeout(() => {
             if (!headerFixed) {
-                header.style.top = "-66px"; // Hide the header after 2 seconds
+                header.style.top = "-66px";
             }
-        }, 1000); // 2000ms = 2 seconds
+        }, 900);
     }
 
     // Listen for scroll events
     window.addEventListener("scroll", () => {
-        if (headerFixed) return; // If header is fixed, do nothing
+        if (headerFixed) return;
 
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -919,8 +919,19 @@
             hideHeaderAfterTimeout(); // Resume the auto-hide behavior
         }
     });
+// Add hover event listeners to the header
+header.addEventListener("mouseenter", () => {
+    headerFixed = true; // Keep the header fixed
+    header.style.top = "0"; // Ensure the header is visible
+    clearTimeout(hideHeaderTimeout); // Clear any timeout to hide the header
+});
 
-    // Ensure the header disappears even at the top after 2 seconds
+header.addEventListener("mouseleave", () => {
+    headerFixed = false; // Allow the header to auto-hide again
+    hideHeaderAfterTimeout(); // Resume the auto-hide behavior
+});
+
+
     hideHeaderAfterTimeout();
 </script>
 
